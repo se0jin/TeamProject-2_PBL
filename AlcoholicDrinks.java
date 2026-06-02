@@ -1,33 +1,31 @@
 
 /**
- * AlcoholicDrinks 클래스의 설명을 작성하세요.
+ * AlcoholicDrinks Products를 상속받고 TAX를 구현하는 주류 상품 클래스 (세금 10%)
  *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * @author (2팀)
+ * @version (2026.06.02)
  */
-public class AlcoholicDrinks
+public class AlcoholicDrinks extends Products implements TAX 
 {
-    // 인스턴스 변수 - 다음의 예제를 사용자에 맞게 변경하세요.
-    private int x;
-
+    private static final double TAX_RATE = 0.10;
+ 
     /**
-     * AlcoholicDrinks 클래스의 객체 생성자
-     */
-    public AlcoholicDrinks()
-    {
-        // 인스턴스 변수 초기화
-        x = 0;
-    }
-
-    /**
-     * 예제 메소드 - 이 주석을 사용자에 맞게 바꾸십시오
+     * AlcoholicDrinks 생성자 (5장 - Inheritance와 Constructor)
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param name  주류명
+     * @param price 주류 가격
      */
-    public int sampleMethod(int y)
-    {
-        // 여기에 코드를 작성하세요.
-        return x + y;
+    public AlcoholicDrinks(String name, int price) {
+        super(name, price);
+    }
+ 
+    /**
+     * 세금 계산 메소드 오버라이딩 (5장 - Method Overriding + Interface 구현)
+     *
+     * @return 세금액 = price × 10%
+     */
+    @Override
+    public double CalculateTax() {
+        return price * TAX_RATE;
     }
 }

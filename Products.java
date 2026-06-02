@@ -1,33 +1,48 @@
 
 /**
- * Products 클래스의 설명을 작성하세요.
+ * Products 모든 상품의 공통 속성(이름, 가격)을 정의하는 추상 부모 클래스
  *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * @author (2팀)
+ * @version (2026.06.02)
  */
-public class Products
+public abstract class Products 
 {
-    // 인스턴스 변수 - 다음의 예제를 사용자에 맞게 변경하세요.
-    private int x;
-
+    protected String name;
+    protected int price;
+ 
     /**
-     * Products 클래스의 객체 생성자
-     */
-    public Products()
-    {
-        // 인스턴스 변수 초기화
-        x = 0;
-    }
-
-    /**
-     * 예제 메소드 - 이 주석을 사용자에 맞게 바꾸십시오
+     * Products 생성자 (4장 - Constructor)
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param name  상품명
+     * @param price 상품 가격
      */
-    public int sampleMethod(int y)
-    {
-        // 여기에 코드를 작성하세요.
-        return x + y;
+    public Products(String name, int price) {
+        this.name  = name; 
+        this.price = price;
     }
+ 
+    /**
+     * 상품명 반환 getter (4장 - 캡슐화/정보은닉)
+     *
+     * @return 상품명 (String)
+     */
+    public String getName() {
+        return name;
+    }
+ 
+    /**
+     * 상품 가격 반환 getter (4장 - 캡슐화/정보은닉)
+     *
+     * @return 상품 가격 (int)
+     */
+    public int getPrice() {
+        return price;
+    }
+ 
+    /**
+     * 세금 계산 추상 메소드 (5장 - Abstract Method)
+     * 
+     * @return 세금액 (double)
+     */
+    public abstract double CalculateTax();
 }
