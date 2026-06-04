@@ -162,9 +162,9 @@ public class POST implements TAX {
      * POS 시스템 메인 실행 메소드
      */
     public void run() {
-        System.out.println("==========================================");
-        System.out.println("    POS (Point Of Sale Terminal) 시작    ");
-        System.out.println("==========================================");
+        System.out.println("=========================================");
+        System.out.println("    POST   ");
+        System.out.println("=========================================");
         System.out.println();
 
         printProductDB();
