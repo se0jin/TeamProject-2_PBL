@@ -11,7 +11,7 @@ public abstract class Products
     protected int price;
  
     /**
-     * Products 생성자 (4장 - Constructor)
+     * Products 생성자
      *
      * @param name  상품명
      * @param price 상품 가격
@@ -22,7 +22,7 @@ public abstract class Products
     }
  
     /**
-     * 상품명 반환 getter (4장 - 캡슐화/정보은닉)
+     * 상품명 반환 getter
      *
      * @return 상품명 (String)
      */
@@ -31,7 +31,7 @@ public abstract class Products
     }
  
     /**
-     * 상품 가격 반환 getter (4장 - 캡슐화/정보은닉)
+     * 상품 가격 반환 getter
      *
      * @return 상품 가격 (int)
      */
@@ -40,7 +40,7 @@ public abstract class Products
     }
  
     /**
-     * 세금 계산 추상 메소드 (5장 - Abstract Method)
+     * 세금 계산 추상 메소드
      * 
      * @return 세금액 (double)
      */
