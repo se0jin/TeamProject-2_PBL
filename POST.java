@@ -113,9 +113,9 @@ public class POST{
     }
 
     public void run() {
-        System.out.println("==========================================");
-        System.out.println("    POS (Point Of Sale Terminal) 시작    ");
-        System.out.println("==========================================");
+        System.out.println("=========================================");
+        System.out.println("    POST   ");
+        System.out.println("=========================================");
         System.out.println();
 
         printProductDB();
