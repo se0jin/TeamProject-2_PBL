@@ -1,11 +1,10 @@
-import java.util.ArrayList;
 /**
  * Sale 한 번의 판매 거래에서 구매된 상품 목록과 합계를 관리하는 클래스
+ * 표시 가격에 세금이 포함되어 있으므로 calculate()가 곧 결제 금액
  *
  * @author (2팀)
  * @version (2026.06.02)
  */
-// Sale : 한 번의 거래에 담긴 상품들과 수량을 관리
 public class Sale {
     private Products[] products;   // 산 상품들
     private int[] count;           // 각 상품 수량
@@ -24,7 +23,7 @@ public class Sale {
         size = size + 1;
     }
 
-    // 상품 합계 (가격 x 수량 더하기) - 3장 for문
+    // 결제 금액 합계 (세금 포함 표시가격 x 수량) - 3장 for문
     public double calculate() {
         double total = 0;
         for (int i = 0; i < size; i++) {
@@ -33,7 +32,7 @@ public class Sale {
         return total;
     }
 
-    // 세금 합계 (각 상품 세금 x 수량) - 다형성으로 자동 계산 (5장)
+    // 세금 합계 - 가격에서 역산 (다형성으로 자동 계산 - 5장)
     public double calculateTax() {
         double tax = 0;
         for (int i = 0; i < size; i++) {

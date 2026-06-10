@@ -21,17 +21,30 @@ public class POST {
         scanner = new Scanner(System.in);
  
         // 상품 DB 채우기 (배열에 객체 저장 - 4장 객체 배열)
-        productDB = new Products[8];
-        productDB[0] = new Beverages(1, "아메리카노", 3000);
-        productDB[1] = new Beverages(2, "카페라떼", 4000);
-        productDB[2] = new Beverages(3, "녹차", 2500);
-        productDB[3] = new Beverages(4, "오렌지주스", 3500);
-        productDB[4] = new AlcoholicDrinks(5, "맥주", 5000);
-        productDB[5] = new AlcoholicDrinks(6, "소주", 4500);
-        productDB[6] = new AlcoholicDrinks(7, "막걸리", 3000);
-        productDB[7] = new AlcoholicDrinks(8, "와인", 15000);
-    }
+        // 상품 DB 채우기 (배열에 객체 저장 - 4장 객체 배열)
+        // 다형성: 같은 AlcoholicDrinks 클래스지만 type에 따라 세율이 다름 (5장)
+        productDB = new Products[12];
  
+        // 막걸리 - 주류세 5%
+        productDB[0]  = new AlcoholicDrinks(1,  "장수막걸리",    1500, AlcoholicDrinks.MAKGEOLLI);
+        productDB[1]  = new AlcoholicDrinks(2,  "이동막걸리",    1800, AlcoholicDrinks.MAKGEOLLI);
+        // 맥주 - 주류세 72%
+        productDB[2]  = new AlcoholicDrinks(3,  "카스500ml",     2500, AlcoholicDrinks.BEER);
+        productDB[3]  = new AlcoholicDrinks(4,  "테라500ml",     2600, AlcoholicDrinks.BEER);
+        // 증류주(소주) - 주류세 72%
+        productDB[4]  = new AlcoholicDrinks(5,  "참이슬360ml",   1800, AlcoholicDrinks.SOJU);
+        productDB[5]  = new AlcoholicDrinks(6,  "처음처럼360ml", 1800, AlcoholicDrinks.SOJU);
+        // 와인 - 주류세 30%
+        productDB[6]  = new AlcoholicDrinks(7,  "샤토메를로",   15000, AlcoholicDrinks.WINE);
+        productDB[7]  = new AlcoholicDrinks(8,  "로제와인",     12000, AlcoholicDrinks.WINE);
+        // 양주 - 주류세 72%
+        productDB[8]  = new AlcoholicDrinks(9,  "조니워커블랙", 45000, AlcoholicDrinks.WHISKEY);
+        productDB[9]  = new AlcoholicDrinks(10, "발렌타인17년", 80000, AlcoholicDrinks.WHISKEY);
+        // 일반 음료 - 부가세 10%
+        productDB[10] = new Beverages(11, "코카콜라250ml", 1200);
+        productDB[11] = new Beverages(12, "삼다수500ml",    900);
+    }
+    
     public void buyItemsWithCash() {
         // 상품은 productDB에 미리 저장돼 있음 (화면에는 보여주지 않음)
         // 바코드(번호) + 수량 입력 반복 (완료: 0)
@@ -55,10 +68,10 @@ public class POST {
                 if (found == null) {
                     System.out.println("오류: 없는 상품입니다.");
                 } else {
+                    System.out.println("상품명: " + found.getName());
+                    System.out.println("가격: " + found.getPrice() + "원");
                     System.out.print("수량 입력: ");
                     int qty = scanner.nextInt();
-                    System.out.println("상품명: " + found.getName()
-                        + ", 가격: " + found.getPrice() + "원");
                     sale.addProduct(found, qty);   // Sale 정보에 추가
                 }
             }
@@ -71,17 +84,16 @@ public class POST {
         }
  
         // 지불할 금액 계산 및 출력
-        double productTotal = sale.calculate();
-        double taxTotal = sale.calculateTax();
-        double payment = productTotal + taxTotal;
+        double payment      = (int)sale.calculate();       // 결제금액 (세금 포함)
+        double taxTotal     = (int)sale.calculateTax();    // 역산된 세금액
+        double supplyAmount = payment - taxTotal;     // 공급가액 (세금 제외)
+        
         System.out.println("--------------------");
-        System.out.println("상품 합계: " + productTotal + "원");
-        System.out.println("세금 합계: " + taxTotal + "원");
         System.out.println("지불할 금액: " + payment + "원");
         System.out.println("--------------------");
  
         // 받은 현금 입력
-        System.out.print("받은 현금 입력: ");
+        System.out.print("받은 현금 입력: " + receivedCash + "원");
         receivedCash = scanner.nextDouble();
  
         // 받은 현금 >= 지불할 금액 ?
@@ -101,9 +113,13 @@ public class POST {
             int c = sale.getCount(i);
             System.out.println(p.getName() + " x " + c + " = " + (p.getPrice() * c) + "원");
         }
-        System.out.println("지불할 금액: " + payment + "원");
-        System.out.println("받은 현금: " + receivedCash + "원");
-        System.out.println("거스름돈: " + change + "원");
+        System.out.println("--------------------------------");
+        System.out.println("결 제 금 액:          " + payment + "원");
+        System.out.println("공 급 가 액:          " + supplyAmount + "원");
+        System.out.println("부 가 세 액:          " + taxTotal + "원");
+        System.out.println("--------------------------------");
+        System.out.println("받은 현금:          " + receivedCash + "원");
+        System.out.println("거 스 름 돈 :          " + change + "원");
         System.out.println("================");
  
         // Sale 정보를 SaleDB에 저장

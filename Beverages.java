@@ -13,7 +13,8 @@ public class Beverages extends Products implements TAX {
     }
 
     // 부모의 추상 메소드 오버라이딩 (5장)
+    // 세금 = 표시가격 - (표시가격 / (1 + 세율))
     public double CalculateTax() {
-        return price * TAX_RATE;
+        return price - (price / (1 + TAX_RATE));
     }
 }
