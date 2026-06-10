@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class POST{
 
     private Sale sale;
-    private TAX tax; 
+    private TAX tax;
     private Products[] productDB;
     private Scanner scan;
     private int dbSize;
