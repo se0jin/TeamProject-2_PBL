@@ -20,7 +20,10 @@ public class Sale {
         size   = 0;
     }
 
-    // 상품 추가 (primitives만 저장)
+    /**
+     * Sale 생성자 (4장 - Constructor)
+     * 각 항목의 ArrayList를 초기화한다.
+     */
     public void addItem(String name, int price, int count, double tax) {
         names[size]  = name;
         prices[size] = price;

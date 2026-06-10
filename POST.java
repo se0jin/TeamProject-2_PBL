@@ -45,6 +45,9 @@ public class POST {
         productDB[11] = new Beverages(12, "삼다수500ml",    900);
     }
 
+    /**
+     * 현금결제를 하는 메소드
+     */
     public void buyItemsWithCash() {
         // 매 거래마다 새 Sale 객체 생성 (이전 거래 데이터 보호 - 버그 수정)
         sale = new Sale();

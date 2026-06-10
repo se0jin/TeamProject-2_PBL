@@ -17,10 +17,9 @@ public class AlcoholicDrinks extends Products implements TAX {
 
     private double TAX_RATE;   // 세율 (종류에 따라 결정)
 
-    
     public AlcoholicDrinks(int productID, String name, int price, int type) {
         super(productID, name, price);   
-        
+
         // 다형성: 같은 CalculateTax() 메소드가 type에 따라 다른 결과 반환
         if (type == MAKGEOLLI) {
             TAX_RATE = 0.05;   // 막걸리 주류세 5%
@@ -37,8 +36,10 @@ public class AlcoholicDrinks extends Products implements TAX {
         }
     }
 
-    // 표시 가격에 세금이 포함되어 있으므로 역산으로 세금 계산
-    // 세금 = 표시가격 - (표시가격 / (1 + 세율))
+    /**
+     * Products의 추상메소드를 오버라이딩하는 메소드
+     * 세금 = 표시가격 - (표시가격 / (1 + 세율))
+     */
     public double CalculateTax() {
         return price - (price / (1 + TAX_RATE));
     }

@@ -29,6 +29,8 @@ public abstract class Products {
         return price;
     }
 
-    // 추상 메소드 : 세금 계산은 자식이 구현 (5장)
+    /**
+     * AlcoholicDrinks와 Beverage의 추상 메소드
+     */
     public abstract double CalculateTax();
 }

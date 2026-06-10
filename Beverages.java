@@ -12,8 +12,10 @@ public class Beverages extends Products implements TAX {
         super(productID, name, price);   // 부모 생성자 호출 (5장 super)
     }
 
-    // 부모의 추상 메소드 오버라이딩 (5장)
-    // 세금 = 표시가격 - (표시가격 / (1 + 세율))
+    /**
+     * Products의 추상메소드를 오버라이딩하는 메소드
+     * 세금 = 표시가격 - (표시가격 / (1 + 세율))
+     */
     public double CalculateTax() {
         return price - (price / (1 + TAX_RATE));
     }

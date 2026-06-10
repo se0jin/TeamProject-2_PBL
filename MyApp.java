@@ -11,8 +11,6 @@ public class MyApp
  
     /**
      * 프로그램 메인 메소드 - 진입점
-     *
-     * @param args 커맨드라인 인수 (사용 안 함)
      */
     public static void main(String[] args) {
         MyApp app  = new MyApp();
