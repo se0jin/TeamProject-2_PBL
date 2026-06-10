@@ -13,13 +13,13 @@ public class POST {
     private int saleSize;         // saleDB에 저장된 거래 수
     private double receivedCash;  // 받은 현금
     private Scanner scanner;
-
+ 
     public POST() {
         sale = new Sale();
         saleDB = new Sale[100];
         saleSize = 0;
         scanner = new Scanner(System.in);
-
+ 
         // 상품 DB 채우기 (배열에 객체 저장 - 4장 객체 배열)
         productDB = new Products[8];
         productDB[0] = new Beverages(1, "아메리카노", 3000);
@@ -31,24 +31,16 @@ public class POST {
         productDB[6] = new AlcoholicDrinks(7, "막걸리", 3000);
         productDB[7] = new AlcoholicDrinks(8, "와인", 15000);
     }
-
+ 
     public void buyItemsWithCash() {
-        // 상품 목록 출력
-        System.out.println("===== 상품 목록 =====");
-        for (int i = 0; i < productDB.length; i++) {
-            System.out.println(productDB[i].getProductID() + " : "
-                + productDB[i].getName() + " - "
-                + productDB[i].getPrice() + "원");
-        }
-        System.out.println("====================");
-
+        // 상품은 productDB에 미리 저장돼 있음 (화면에는 보여주지 않음)
         // 바코드(번호) + 수량 입력 반복 (완료: 0)
         int barcode = 0;
         boolean done = false;
         while (done == false) {
             System.out.print("상품 바코드 입력 (완료: 0): ");
             barcode = scanner.nextInt();
-
+ 
             if (barcode == 0) {
                 done = true;
             } else {
@@ -59,7 +51,7 @@ public class POST {
                         found = productDB[i];
                     }
                 }
-
+ 
                 if (found == null) {
                     System.out.println("오류: 없는 상품입니다.");
                 } else {
@@ -71,13 +63,13 @@ public class POST {
                 }
             }
         }
-
+ 
         // 상품이 하나도 없으면 종료
         if (sale.getSize() == 0) {
             System.out.println("구매한 상품이 없습니다.");
             return;
         }
-
+ 
         // 지불할 금액 계산 및 출력
         double productTotal = sale.calculate();
         double taxTotal = sale.calculateTax();
@@ -87,21 +79,21 @@ public class POST {
         System.out.println("세금 합계: " + taxTotal + "원");
         System.out.println("지불할 금액: " + payment + "원");
         System.out.println("--------------------");
-
+ 
         // 받은 현금 입력
         System.out.print("받은 현금 입력: ");
         receivedCash = scanner.nextDouble();
-
+ 
         // 받은 현금 >= 지불할 금액 ?
         if (receivedCash < payment) {
             System.out.println("현금이 부족합니다. 판매를 취소합니다.");
             sale.reset();
             return;
         }
-
+ 
         // 거스름돈 계산
         double change = receivedCash - payment;
-
+ 
         // 영수증 출력
         System.out.println("===== 영수증 =====");
         for (int i = 0; i < sale.getSize(); i++) {
@@ -113,7 +105,7 @@ public class POST {
         System.out.println("받은 현금: " + receivedCash + "원");
         System.out.println("거스름돈: " + change + "원");
         System.out.println("================");
-
+ 
         // Sale 정보를 SaleDB에 저장
         saleDB[saleSize] = sale;
         saleSize = saleSize + 1;
