@@ -7,7 +7,7 @@
  */
 public class MyApp 
 {
-    public POST post;
+    private POST post;
  
     /**
      * 프로그램 메인 메소드 - 진입점
@@ -18,6 +18,6 @@ public class MyApp
         MyApp app  = new MyApp();
         app.post   = new POST();
 
-        app.post.run();
+        app.post.buyItemsWithCash();
     }
 }

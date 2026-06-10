@@ -5,44 +5,30 @@
  * @author (2팀)
  * @version (2026.06.02)
  */
-public abstract class Products 
-{
-    protected String name;
-    protected int price;
- 
-    /**
-     * Products 생성자
-     *
-     * @param name  상품명
-     * @param price 상품 가격
-     */
-    public Products(String name, int price) {
-        this.name  = name; 
+public abstract class Products {
+    protected int productID;   // 상품 번호(바코드로 입력받는 번호)
+    protected String name;     // 상품명
+    protected int price;       // 가격
+
+    // 생성자 (4장)
+    public Products(int productID, String name, int price) {
+        this.productID = productID;
+        this.name = name;
         this.price = price;
     }
- 
-    /**
-     * 상품명 반환 getter
-     *
-     * @return 상품명 (String)
-     */
+
+    public int getProductID() {
+        return productID;
+    }
+
     public String getName() {
         return name;
     }
- 
-    /**
-     * 상품 가격 반환 getter
-     *
-     * @return 상품 가격 (int)
-     */
+
     public int getPrice() {
         return price;
     }
- 
-    /**
-     * 세금 계산 추상 메소드
-     * 
-     * @return 세금액 (double)
-     */
+
+    // 추상 메소드 : 세금 계산은 자식이 구현 (5장)
     public abstract double CalculateTax();
 }

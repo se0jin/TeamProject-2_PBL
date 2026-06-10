@@ -5,128 +5,56 @@ import java.util.ArrayList;
  * @author (2팀)
  * @version (2026.06.02)
  */
+// Sale : 한 번의 거래에 담긴 상품들과 수량을 관리
 public class Sale {
-    private ArrayList<String> names; //판매 상품명 목록
-    private ArrayList<Integer> prices; //판매 상품 단가 목록
-    private ArrayList<Integer> quantities; //판매 상품 수량 목록
-    private ArrayList<Double> taxes; //판매 상품 단위 세금 목록
- 
-    /**
-     * Sale 생성자 (4장 - Constructor)
-     * 각 항목의 ArrayList를 초기화한다.
-     */
+    private Products[] products;   // 산 상품들
+    private int[] count;           // 각 상품 수량
+    private int size;              // 지금 담긴 개수
+
     public Sale() {
-        names      = new ArrayList<String>();
-        prices     = new ArrayList<Integer>();
-        quantities = new ArrayList<Integer>();
-        taxes      = new ArrayList<Double>();
+        products = new Products[100];   // 최대 100개 (3장 배열 생성)
+        count = new int[100];
+        size = 0;
     }
- 
-    /**
-     * 판매 목록에 상품을 추가하는 메소드
-     * 
-     * @param name  상품명
-     * @param price 상품 단가
-     * @param tax   상품 단위 세금
-     */
-    public void addProduct(String name, int price, double tax) {
-        for (int i = 0; i < names.size(); i++) {
-            if (names.get(i).equals(name)) {
-                quantities.set(i, quantities.get(i) + 1);
-                return;
-            }
-        }
-        names.add(name);
-        prices.add(price);
-        quantities.add(1);
-        taxes.add(tax);
+
+    // 상품 추가
+    public void addProduct(Products p, int c) {
+        products[size] = p;
+        count[size] = c;
+        size = size + 1;
     }
- 
-    /**
-     * 현재 등록된 상품 종류 수 반환 getter (4장 - 캡슐화)
-     *
-     * @return 등록된 상품 종류 수 (int)
-     */
-    public int getProductCount() {
-        return names.size();
-    }
- 
-    /**
-     * 상품명 반환 getter
-     *
-     * @param index 인덱스
-     * @return 상품명 (String)
-     */
-    public String getName(int index) {
-        return names.get(index);
-    }
- 
-    /**
-     * 단가 반환 getter
-     *
-     * @param index 인덱스
-     * @return 단가 (int)
-     */
-    public int getPrice(int index) {
-        return prices.get(index);
-    }
- 
-    /**
-     * 수량 반환 getter
-     *
-     * @param index 인덱스
-     * @return 수량 (int)
-     */
-    public int getQuantity(int index) {
-        return quantities.get(index);
-    }
- 
-    /**
-     * 단위 세금 반환 getter
-     *
-     * @param index 인덱스
-     * @return 단위 세금 (double)
-     */
-    public double getTax(int index) {
-        return taxes.get(index);
-    }
- 
-    /**
-     * 전체 상품 가격 합계 계산 메소드 (3장 - for 반복문)
-     * 단가 × 수량을 합산
-     *
-     * @return 전체 상품 가격 합계
-     */
-    public double sale_calculate() {
+
+    // 상품 합계 (가격 x 수량 더하기) - 3장 for문
+    public double calculate() {
         double total = 0;
-        for (int i = 0; i < prices.size(); i++) {
-            total += prices.get(i) * quantities.get(i);
+        for (int i = 0; i < size; i++) {
+            total = total + products[i].getPrice() * count[i];
         }
         return total;
     }
- 
-    /**
-     * 전체 세금 합계 계산 메소드 (3장 - for 반복문)
-     * 단위세금 × 수량을 합산
-     *
-     * @return 전체 세금 합계 (double)
-     */
-    public double tax_calculate() {
-        double total = 0;
-        for (int i = 0; i < taxes.size(); i++) {
-            total += taxes.get(i) * quantities.get(i);
+
+    // 세금 합계 (각 상품 세금 x 수량) - 다형성으로 자동 계산 (5장)
+    public double calculateTax() {
+        double tax = 0;
+        for (int i = 0; i < size; i++) {
+            tax = tax + products[i].CalculateTax() * count[i];
         }
-        return total;
+        return tax;
     }
- 
-    /**
-     * 판매 목록 초기화(리셋) 메소드
-     * 판매 취소 시 호출한다.
-     */
+
+    public int getSize() {
+        return size;
+    }
+
+    public Products getProduct(int index) {
+        return products[index];
+    }
+
+    public int getCount(int index) {
+        return count[index];
+    }
+
     public void reset() {
-        names      = new ArrayList<String>();
-        prices     = new ArrayList<Integer>();
-        quantities = new ArrayList<Integer>();
-        taxes      = new ArrayList<Double>();
+        size = 0;
     }
 }

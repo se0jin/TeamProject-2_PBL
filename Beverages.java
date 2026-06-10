@@ -5,27 +5,15 @@
  * @author (2팀)
  * @version (2026.06.02)
  */
-public class Beverages extends Products implements TAX 
-{
-    private static final double TAX_RATE = 0.10;
- 
-    /**
-     * Beverages 생성자 (5장 - Inheritance와 Constructor)
-     *
-     * @param name  음료명
-     * @param price 음료 가격
-     */
-    public Beverages(String name, int price) {
-        super(name, price);
+public class Beverages extends Products implements TAX {
+    private static final double TAX_RATE = 0.1;   // 세율 10%
+
+    public Beverages(int productID, String name, int price) {
+        super(productID, name, price);   // 부모 생성자 호출 (5장 super)
     }
- 
-    /**
-     * 세금 계산 메소드 오버라이딩 (5장 - Method Overriding + Interface 구현)
-     *
-     * @return 세금액 = price × 10%
-     */
-    @Override
+
+    // 부모의 추상 메소드 오버라이딩 (5장)
     public double CalculateTax() {
-        return price * TAX_RATE; 
+        return price * TAX_RATE;
     }
 }
