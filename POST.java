@@ -126,6 +126,5 @@ public class POST {
         // [Step 11] Sale 정보를 SaleDB에 저장
         saleDB[saleSize] = sale;
         saleSize = saleSize + 1;
-        System.out.println("판매 정보가 SaleDB에 저장되었습니다.");
     }
 }
