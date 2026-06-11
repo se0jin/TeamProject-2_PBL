@@ -77,9 +77,9 @@ public class POST {
                     System.out.println("상품명: " + found.getName());
                     System.out.println("가격: " + found.getPrice() + "원");
                     System.out.print("수량 입력: ");
-                    int qty = scanner.nextInt();
+                    int count = scanner.nextInt();
                     // primitives만 Sale에 저장 → Sale→Products 의존 화살표 미생성
-                    sale.addItem(found.getName(), found.getPrice(), qty, found.CalculateTax());
+                    sale.addItem(found.getName(), found.getPrice(), count, found.CalculateTax());
                 }
             }
         }
