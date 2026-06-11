@@ -5,17 +5,9 @@
  * @author (2팀)
  * @version (2026.06.02)
  */
-public class MyApp 
-{
-    private POST post;
- 
-    /**
-     * 프로그램 메인 메소드 - 진입점
-     */
+public class MyApp {
     public static void main(String[] args) {
-        MyApp app  = new MyApp();
-        app.post   = new POST();
-
-        app.post.buyItemsWithCash();
+        POST post = new POST();      
+        post.buyItemsWithCash();
     }
 }
