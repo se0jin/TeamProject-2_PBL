@@ -14,7 +14,7 @@ public class Beverages extends Products implements TAX {
      * @param  name       상품명
      * @param  price      판매 가격 (세금 포함)
      */
-    public Beverages(int productID, String name, int price) {
+    public Beverages(long productID, String name, int price) {
         super(productID, name, price);
     }
  

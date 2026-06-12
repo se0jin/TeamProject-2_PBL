@@ -25,19 +25,28 @@ public class POST {
         saleSize = 0;
         scan = new Scanner(System.in);
 
-        productDB = new Products[12];
-        productDB[0] = new AlcoholicDrinks(1,  "장수막걸리",     1500, AlcoholicDrinks.MAKGEOLLI);
-        productDB[1] = new AlcoholicDrinks(2,  "이동막걸리",     1800, AlcoholicDrinks.MAKGEOLLI);
-        productDB[2] = new AlcoholicDrinks(3,  "카스500ml",      2500, AlcoholicDrinks.BEER);
-        productDB[3] = new AlcoholicDrinks(4,  "테라500ml",      2600, AlcoholicDrinks.BEER);
-        productDB[4] = new AlcoholicDrinks(5,  "참이슬360ml",    1800, AlcoholicDrinks.SOJU);
-        productDB[5] = new AlcoholicDrinks(6,  "처음처럼360ml",  1800, AlcoholicDrinks.SOJU);
-        productDB[6] = new AlcoholicDrinks(7,  "샤토메를로",    15000, AlcoholicDrinks.WINE);
-        productDB[7] = new AlcoholicDrinks(8,  "로제와인",      12000, AlcoholicDrinks.WINE);
-        productDB[8] = new AlcoholicDrinks(9,  "조니워커블랙",  45000, AlcoholicDrinks.WHISKEY);
-        productDB[9] = new AlcoholicDrinks(10, "발렌타인17년",  80000, AlcoholicDrinks.WHISKEY);
-        productDB[10] = new Beverages(11, "코카콜라250ml", 1200);
-        productDB[11] = new Beverages(12, "삼다수500ml",    900);
+        // 1. 주류 (AlcoholicDrinks) - 따옴표로 감싸서 문자열로 표현
+        productDB[0] = new AlcoholicDrinks( 8801031234567L, "장수막걸리",     1500, AlcoholicDrinks.MAKGEOLLI);
+        productDB[1] = new AlcoholicDrinks( 8801031234568L , "이동막걸리",     1800, AlcoholicDrinks.MAKGEOLLI);
+        productDB[2] = new AlcoholicDrinks( 8801052987654L , "카스500ml",      2500, AlcoholicDrinks.BEER);
+        productDB[3] = new AlcoholicDrinks( 8801052987655L , "테라500ml",      2600, AlcoholicDrinks.BEER);
+        productDB[4] = new AlcoholicDrinks( 8801093111222L, "참이슬360ml",    1800, AlcoholicDrinks.SOJU);
+        productDB[5] = new AlcoholicDrinks( 8801093111223L , "처음처럼360ml",  1800, AlcoholicDrinks.SOJU);
+        productDB[6] = new AlcoholicDrinks( 8801124333444L , "샤토메를로",    15000, AlcoholicDrinks.WINE);
+        productDB[7] = new AlcoholicDrinks( 8801124333445L, "로제와인",      12000, AlcoholicDrinks.WINE);
+        productDB[8] = new AlcoholicDrinks( 8801155555666L  , "조니워커블랙",  45000, AlcoholicDrinks.WHISKEY);
+        productDB[9] = new AlcoholicDrinks( 8801155555667L , "발렌타인17년",  80000, AlcoholicDrinks.WHISKEY);
+        
+        // 2. 기존 음료수 (Beverages) - 보내주신 사진 속 코카콜라 실제 바코드 반영!
+        productDB[10] = new Beverages( 8809010665009L , "코카콜라500ml", 1200); 
+        productDB[11] = new Beverages( 8809010665016L, "삼다수500ml",    900);
+        
+        // 3. 추가 음료수 (Beverages)
+        productDB[12] = new Beverages( 8809010665023L , "칠성사이다500ml", 1500);
+        productDB[13] = new Beverages( 8809010665030L , "포카리스웨트500ml", 1800);
+        productDB[14] = new Beverages( 8809010665047L , "바나나맛우유",    1700);
+        productDB[15] = new Beverages( 8809010665054L , "레쓰비캔커피",     1000);
+        productDB[16] = new Beverages( 8809010665061L , "아이스티355ml",   1400);
     }
 
     /**

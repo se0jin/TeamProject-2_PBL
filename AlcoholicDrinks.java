@@ -22,7 +22,7 @@ public class AlcoholicDrinks extends Products implements TAX {
      * @param  price      판매 가격 (세금 포함)
      * @param  type       주류 종류 상수 (MAKGEOLLI/BEER/SOJU/WINE/WHISKEY)
      */
-    public AlcoholicDrinks(int productID, String name, int price, int type) {
+    public AlcoholicDrinks(long productID, String name, int price, int type) {
         super(productID, name, price);
         if (type == MAKGEOLLI) {
             TAX_RATE = 0.05;

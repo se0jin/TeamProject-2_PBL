@@ -5,7 +5,7 @@
  * @version (2026.06.02)
  */
 public abstract class Products {
-    protected int    productID;  // 상품 ID (바코드)
+    protected long    productID;  // 상품 ID (바코드)
     protected String name;       // 상품명
     protected int    price;      // 상품 가격 (세금 포함)
  
@@ -16,7 +16,7 @@ public abstract class Products {
      * @param  name       상품명
      * @param  price      판매 가격 (세금 포함)
      */
-    public Products(int productID, String name, int price) {
+    public Products(long productID, String name, int price) {
         this.productID = productID;
         this.name      = name;
         this.price     = price;
@@ -32,9 +32,9 @@ public abstract class Products {
     /**
      * 상품 ID를 반환한다.
      *
-     * @return 상품 ID (int)
+     * @return 상품 ID (long)
      */
-    public int getProductID() {
+    public long getProductID() {
         return productID;
     }
  
